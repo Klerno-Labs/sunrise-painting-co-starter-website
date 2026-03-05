@@ -3,17 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --font-montserrat: 'Montserrat', sans-serif;
-    --font-inter: 'Inter', sans-serif;
+  html {
+    scroll-behavior: smooth;
   }
-
+  
   body {
-    @apply bg-background text-text-body font-body antialiased;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-text-heading font-bold;
+    @apply bg-background text-text-body;
   }
 }
 
@@ -23,17 +18,11 @@
   }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+/* Hide scrollbar for gallery but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: #0F2B46;
-  border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #00A9CE;
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

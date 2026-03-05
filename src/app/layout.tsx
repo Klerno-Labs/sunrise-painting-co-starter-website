@@ -1,44 +1,51 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import { images } from "@/config/images";
+import { siteConfig } from "@/config/site";
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
+import Script from "next/script";
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
   display: "swap",
+  weight: ["500", "600", "700", "800"],
 });
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sunrisepaintingco.com"),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Sunrise Painting Co. | Houston's Premier Residential & Commercial Painters",
-    template: "%s | Sunrise Painting Co."
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: "Family-owned residential and commercial painting company serving the Greater Houston area. Interior, exterior, cabinet refinishing, and drywall repair. Licensed & Insured.",
+  description: siteConfig.description,
   openGraph: {
-    title: "Sunrise Painting Co. | Houston's Premier Residential & Commercial Painters",
-    description: "Premium painting services in Houston, Katy, Sugar Land, and The Woodlands. Get a free quote today.",
-    url: "https://sunrisepaintingco.com",
-    siteName: "Sunrise Painting Co.",
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
     images: [
       {
-        url: images.hero.src,
-        width: images.hero.width,
-        height: images.hero.height,
-        alt: images.hero.alt,
+        url: "/og-image.jpg", // Placeholder
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
       },
     ],
-    locale: "en_US",
-    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
   },
   robots: {
     index: true,
@@ -48,58 +55,52 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`${montserrat.variable} ${inter.variable}`}>
-        <Header />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${montserrat.variable} ${inter.variable} font-body antialiased bg-background text-slate-800`}>
+        <Navbar />
         <main className="min-h-screen">
           {children}
         </main>
         <Footer />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Sunrise Painting Co.",
-              "image": images.hero.src,
-              "telephone": "(713) 555-8291",
-              "email": "info@sunrisepaintingco.com",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "2847 Westpark Dr, Suite 110",
-                "addressLocality": "Houston",
-                "addressRegion": "TX",
-                "postalCode": "77098",
-                "addressCountry": "US"
+        
+        {/* Structured Data for Local Business */}
+        <Script id="structured-data" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": siteConfig.name,
+            "image": "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1200&h=800&fit=crop",
+            "telephone": siteConfig.links.phone,
+            "email": siteConfig.links.email,
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "2847 Westpark Dr, Suite 110",
+              "addressLocality": "Houston",
+              "addressRegion": "TX",
+              "postalCode": "77098",
+              "addressCountry": "US"
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "07:00",
+                "closes": "18:00"
               },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "29.7304",
-                "longitude": "-95.4642"
-              },
-              "openingHoursSpecification": [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                  "opens": "07:00",
-                  "closes": "18:00"
-                },
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": "Saturday",
-                  "opens": "08:00",
-                  "closes": "14:00"
-                }
-              ],
-              "priceRange": "$$"
-            })
-          }}
-        />
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "08:00",
+                "closes": "14:00"
+              }
+            ],
+            "priceRange": "$$"
+          })}
+        </Script>
       </body>
     </html>
   );

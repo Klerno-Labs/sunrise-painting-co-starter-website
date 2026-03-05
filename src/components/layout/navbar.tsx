@@ -1,51 +1,47 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
-export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
-    { href: "/about", label: "About" },
-    { href: "/#gallery", label: "Gallery" },
-    { href: "/contact", label: "Contact" },
-  ];
-
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={cn(
+          "fixed top-0 w-full z-50 transition-all duration-300 border-b",
           isScrolled
-            ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100"
-            : "bg-white/95 backdrop-blur-md border-b border-gray-100"
-        }`}
+            ? "bg-white/90 backdrop-blur-md border-gray-100 shadow-sm py-3"
+            : "bg-white/95 backdrop-blur-sm border-transparent py-5"
+        )}
       >
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-[70px]">
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-heading font-bold text-xl group-hover:bg-secondary transition-colors">
+              <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center text-white font-heading font-bold text-xl group-hover:bg-primary-light transition-colors">
                 S
               </div>
               <div className="flex flex-col">
                 <span className="font-heading font-bold text-xl text-primary leading-none">
                   Sunrise
                 </span>
-                <span className="text-xs font-semibold text-secondary tracking-widest uppercase">
+                <span className="text-xs font-semibold text-secondary tracking-wider uppercase">
                   Painting Co.
                 </span>
               </div>
@@ -53,79 +49,100 @@ export function Navbar() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {siteConfig.nav.map((item) => (
                 <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    pathname === link.href
-                      ? "text-primary font-bold"
-                      : "text-text_body"
-                  }`}
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors hover:text-primary relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:bottom-[-4px] after:left-0 after:transition-all hover:after:w-full",
+                    pathname === item.href ? "text-primary after:w-full" : "text-gray-600"
+                  )}
                 >
-                  {link.label}
+                  {item.title}
                 </Link>
               ))}
             </nav>
 
-            {/* Desktop CTA */}
+            {/* CTA Button Desktop */}
             <div className="hidden md:flex items-center gap-4">
-              <a href="tel:7135558291" className="flex items-center gap-2 text-sm font-bold text-accent hover:underline">
-                <Phone size={18} /> (713) 555-8291
+              <a
+                href={`tel:${siteConfig.links.phone}`}
+                className="flex items-center gap-2 text-primary font-semibold hover:text-accent transition-colors"
+              >
+                <Phone size={18} />
+                <span className="text-sm">{siteConfig.links.phone}</span>
               </a>
-              <Link href="/contact">
-                <Button variant="primary" size="sm">
-                  Get a Quote
-                </Button>
+              <Link
+                href="/contact"
+                className="bg-accent text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-accent-dark transition-all shadow-md hover:shadow-lg transform active:scale-95"
+              >
+                Get a Quote
               </Link>
             </div>
 
             {/* Mobile Menu Toggle */}
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              className="md:hidden p-2 text-text_body hover:bg-gray-100 rounded-md"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+              aria-label="Open menu"
+              aria-expanded={isMobileMenuOpen}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
       </header>
 
       {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div className="fixed inset-0 z-40 bg-primary md:hidden">
-          <div className="flex flex-col items-center justify-center h-full gap-8 text-white">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-2xl font-heading font-bold hover:text-secondary transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="flex flex-col gap-4 mt-8 w-full px-8">
-              <a href="tel:7135558291" className="flex items-center justify-center gap-2 text-xl font-bold text-accent">
-                <Phone /> (713) 555-8291
-              </a>
-              <Link href="/contact" onClick={() => setIsOpen(false)}>
-                <Button variant="accent" className="w-full py-4 text-lg">
-                  Get a Free Quote
-                </Button>
-              </Link>
-            </div>
-          </div>
+      <div
+        className={cn(
+          "fixed inset-0 z-40 bg-primary/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out md:hidden",
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="flex flex-col items-center justify-center h-full gap-8 p-4">
           <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-4 right-4 p-2 text-white hover:bg-white/10 rounded-md"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
             aria-label="Close menu"
           >
             <X size={32} />
           </button>
+
+          <nav className="flex flex-col items-center gap-6 text-center">
+            {siteConfig.nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={cn(
+                  "text-2xl font-heading font-semibold text-white/90 hover:text-white transition-colors",
+                  pathname === item.href && "text-secondary"
+                )}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex flex-col items-center gap-4 mt-8">
+            <a
+              href={`tel:${siteConfig.links.phone}`}
+              className="flex items-center gap-3 text-white text-xl font-bold"
+            >
+              <Phone />
+              {siteConfig.links.phone}
+            </a>
+            <Link
+              href="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="bg-accent text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-accent-dark transition-all w-full text-center shadow-lg"
+            >
+              Get Free Estimate
+            </Link>
+          </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

@@ -1,125 +1,106 @@
-import React from "react";
-import SmartEstimateForm from "@/components/sections/SmartEstimateForm";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { motion } from "framer-motion";
+import { Metadata } from "next";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import SmartEstimateForm from "@/components/smart-estimate-form";
+import { siteConfig } from "@/config/site";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Contact Us | Sunrise Painting Co.",
-  description: "Get in touch with Sunrise Painting Co. for a free estimate. Call (713) 555-8291 or visit our Houston office.",
+  description: "Get a free quote for your painting project in Houston. Call us at (713) 555-8291.",
 };
 
 export default function ContactPage() {
-  const faqs = [
-    { q: "Do you offer free estimates?", a: "Yes! We offer free, no-obligation estimates for all residential and commercial projects." },
-    { q: "Are you licensed and insured?", a: "Absolutely. We are fully licensed in the state of Texas and carry comprehensive liability and workers' compensation insurance." },
-    { q: "What areas do you serve?", a: "We primarily serve Houston, Katy, Sugar Land, The Woodlands, and surrounding areas within a 30-mile radius of downtown." },
-    { q: "How long will my project take?", a: "Timelines vary based on project size. A typical interior room takes 1-2 days, while exterior homes usually take 3-5 days depending on weather." },
-  ];
-
   return (
-    <div className="pt-32 pb-20">
-      <div className="container">
+    <div className="pt-32 pb-24 min-h-screen">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">Get in Touch</h1>
-          <p className="text-xl text-text-body">
-            Ready to start your project? We're here to help.
+          <h1 className="font-heading font-bold text-4xl md:text-5xl text-primary mb-4">Get in Touch</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Ready to transform your space? Fill out the form or contact us directly using the information below.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12">
+        <div className="grid lg:grid-cols-5 gap-12">
+          
           {/* Contact Info */}
-          <motion.div 
-            className="lg:col-span-5 space-y-8"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="bg-white p-6 rounded-xl shadow-card border border-border-light">
-              <h2 className="text-2xl font-bold text-primary mb-6">Contact Information</h2>
-              <ul className="space-y-6">
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
+          <div className="lg:col-span-2 space-y-8">
+            <div className="bg-white p-6 rounded-xl shadow-card border border-gray-100">
+              <h3 className="font-bold text-xl text-primary mb-6">Contact Information</h3>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+                    <Phone size={20} />
                   </div>
                   <div>
                     <p className="font-bold text-primary">Phone</p>
-                    <a href="tel:7135558291" className="text-text-body hover:text-secondary transition-colors">(713) 555-8291</a>
+                    <a href={`tel:${siteConfig.links.phone}`} className="text-gray-600 hover:text-secondary transition-colors">
+                      {siteConfig.links.phone}
+                    </a>
                   </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5" />
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+                    <Mail size={20} />
                   </div>
                   <div>
                     <p className="font-bold text-primary">Email</p>
-                    <a href="mailto:info@sunrisepaintingco.com" className="text-text-body hover:text-secondary transition-colors">info@sunrisepaintingco.com</a>
+                    <a href={`mailto:${siteConfig.links.email}`} className="text-gray-600 hover:text-secondary transition-colors">
+                      {siteConfig.links.email}
+                    </a>
                   </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5" />
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+                    <MapPin size={20} />
                   </div>
                   <div>
                     <p className="font-bold text-primary">Office</p>
-                    <p className="text-text-body">2847 Westpark Dr, Suite 110<br />Houston, TX 77098</p>
+                    <p className="text-gray-600">
+                      2847 Westpark Dr, Suite 110<br />
+                      Houston, TX 77098
+                    </p>
                   </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5" />
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+                    <Clock size={20} />
                   </div>
                   <div>
                     <p className="font-bold text-primary">Hours</p>
-                    <p className="text-text-body">Mon-Fri: 7am-6pm<br />Sat: 8am-2pm<br />Sun: Closed</p>
+                    <p className="text-gray-600 text-sm">
+                      Mon-Fri: 7am-6pm<br />
+                      Sat: 8am-2pm
+                    </p>
                   </div>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
 
-            {/* Fake Tracker Map UI */}
-            <div className="bg-gray-100 rounded-xl p-6 border border-border-light flex flex-col items-center justify-center h-64 relative overflow-hidden">
-               <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Map_of_Texas_highlighting_Harris_County.svg/800px-Map_of_Texas_highlighting_Harris_County.svg.png')] bg-cover opacity-20"></div>
-               <div className="relative z-10 text-center bg-white p-4 rounded-lg shadow-md">
-                  <p className="font-bold text-primary text-sm">Technician Tracker</p>
-                  <p className="text-xs text-text-muted">Currently serving 5 crews in Houston</p>
-                  <div className="mt-2 h-1 w-24 bg-gray-200 rounded-full overflow-hidden">
-                     <div className="h-full bg-green-500 w-3/4 animate-pulse"></div>
-                  </div>
+            {/* Placeholder Map Image */}
+            <div className="relative rounded-xl overflow-hidden h-64 shadow-card border border-gray-100">
+               <img 
+                 src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=600&fit=crop&q=80" 
+                 alt="Map placeholder showing service area" 
+                 className="w-full h-full object-cover grayscale opacity-80"
+               />
+               <div className="absolute inset-0 bg-primary/50 flex items-center justify-center">
+                 <div className="text-center text-white">
+                   <p className="font-bold text-lg">Serving Greater Houston</p>
+                   <p className="text-sm opacity-90">Katy, Sugar Land, The Woodlands</p>
+                 </div>
                </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Form */}
-          <motion.div 
-            className="lg:col-span-7"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <SmartEstimateForm variant="full" />
-          </motion.div>
-        </div>
-
-        {/* FAQ Section */}
-        <div className="mt-24 max-w-3xl mx-auto">
-           <h2 className="text-3xl font-bold text-primary text-center mb-12">Frequently Asked Questions</h2>
-           <div className="space-y-4">
-              {faqs.map((item, i) => (
-                 <details key={i} className="group bg-white rounded-lg border border-border-light overflow-hidden">
-                    <summary className="flex justify-between items-center p-6 cursor-pointer font-semibold text-primary hover:bg-gray-50 transition-colors list-none">
-                       <span>{item.q}</span>
-                       <span className="transition-transform group-open:rotate-180">
-                          <svg className="w-5 h-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                       </span>
-                    </summary>
-                    <div className="p-6 pt-0 text-text-body border-t border-border-light mt-2">
-                       <p>{item.a}</p>
-                    </div>
-                 </details>
-              ))}
-           </div>
+          <div className="lg:col-span-3">
+            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
+              <SmartEstimateForm variant="card" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
