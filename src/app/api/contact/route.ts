@@ -1,28 +1,26 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, service, zip, message, _gotcha } = body;
-
+    
     // Honeypot check
-    if (_gotcha) {
-      return NextResponse.json({ status: "success" }, { status: 200 });
+    if (body._gotcha) {
+      return NextResponse.json({ message: "Bot detected" }, { status: 200 });
     }
 
-    // Basic validation
-    if (!name || !email || !phone) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
-    }
+    // Here you would typically:
+    // 1. Validate input (using Zod or similar)
+    // 2. Send an email using Nodemailer, Resend, or SendGrid
+    // 3. Save to a database (Supabase, MongoDB, etc.)
+    
+    // console.log("Form submission received:", body);
 
-    // In a real implementation, you would send an email here using Nodemailer, Resend, or SendGrid
-    // console.log("Form Submission:", { name, email, phone, service, zip, message });
-
-    // Simulate API delay
+    // Simulate processing time
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    return NextResponse.json({ status: "success" }, { status: 200 });
+    return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }

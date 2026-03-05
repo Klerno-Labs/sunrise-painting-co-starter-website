@@ -1,105 +1,144 @@
 import { Metadata } from "next";
-import AboutHero from "@/components/sections/AboutHero";
-import SectionContainer from "@/components/layout/SectionContainer";
-import AccordionItem from "@/components/interactive/AccordionItem";
 import Image from "next/image";
+import { SectionContainer } from "@/components/ui/section-container";
+import { Button } from "@/components/ui/button";
+import { AccordionItem } from "@/components/ui/accordion-item"; // Assuming reusable accordion
 import { images } from "@/config/images";
-import CTASection from "@/components/sections/CTASection";
+import { CheckCircle, Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn more about Sunrise Painting Co., our history, values, and service area in Houston.",
+  description: "Learn about Sunrise Painting Co., our history, values, and service areas in Houston.",
+  openGraph: {
+    title: "About Us",
+    description: "Learn about Sunrise Painting Co., our history, values, and service areas in Houston.",
+    images: [images.about.src]
+  }
 };
 
 const processSteps = [
   {
-    title: "1. Consultation",
-    content: "We start with a detailed consultation to understand your vision, provide color advice, and give you an accurate estimate."
+    title: "1. Consultation & Estimate",
+    content: "We visit your home (or provide a virtual estimate) to understand your vision, assess the scope, and provide a detailed written proposal."
   },
   {
     title: "2. Preparation",
-    content: "Our team meticulously protects your furniture, floors, and fixtures. We sand, caulk, and prime surfaces to ensure paint adheres perfectly."
+    content: "This is the most important part. We protect floors and furniture, repair holes, sand surfaces, and tape edges for clean lines."
   },
   {
     title: "3. Painting",
-    content: "We apply premium paints using industry-leading techniques. We cut in clean lines and apply even coats for a flawless finish."
+    content: "We apply premium paints using industry-best techniques. We maintain a clean work environment throughout the process."
   },
   {
     title: "4. Inspection",
-    content: "Once the job is done, we walk through the project with you to ensure every detail meets our high standards and your satisfaction."
+    content: "We walk through the project with you to ensure every detail meets our high standards and your complete satisfaction."
   }
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <AboutHero />
-      
-      <SectionContainer className="bg-white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-bold text-primary mb-6">Our Story</h2>
-            <p className="text-text-body mb-4 leading-relaxed">
-              Founded in 2012, Sunrise Painting Co. began with a simple mission: to provide Houston homeowners with a painting service they could actually trust. We noticed that too many contractors were unreliable, messy, or produced inconsistent results.
-            </p>
-            <p className="text-text-body mb-4 leading-relaxed">
-              Over the last decade, we have grown from a two-person crew to a team of dedicated professionals serving the Greater Houston area. Despite our growth, we have never lost sight of our core values: integrity, quality, and respect for your home.
-            </p>
-            <p className="text-text-body leading-relaxed">
-              We are not just painters; we are your partners in home improvement. We treat every home as if it were our own, ensuring clean job sites and clear communication from start to finish.
-            </p>
-          </div>
-          <div className="relative">
-            <div className="rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src={images.about.src}
-                alt={images.about.alt}
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-secondary text-white p-6 rounded-lg shadow-xl hidden md:block">
-              <p className="text-3xl font-bold">10+</p>
-              <p className="text-sm">Years Serving Houston</p>
-            </div>
-          </div>
-        </div>
-      </SectionContainer>
-
-      <SectionContainer className="bg-gray-50">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-primary mb-8 text-center">Our Process</h2>
-          <div>
-            {processSteps.map((step, index) => (
-              <AccordionItem key={index} title={step.title}>
-                {step.content}
-              </AccordionItem>
-            ))}
-          </div>
-        </div>
-      </SectionContainer>
-
-      <SectionContainer className="bg-white">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-primary mb-6">Service Area</h2>
-          <p className="text-text-body max-w-2xl mx-auto mb-8">
-            We are proud to serve homeowners and businesses throughout the Greater Houston metropolitan area.
+      {/* Hero */}
+      <section className="relative h-[60vh] flex items-center justify-center">
+        <Image 
+          src={images.about.src} 
+          alt="Sunrise Painting Co. Team" 
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-primary/80" />
+        <div className="relative z-10 text-center text-white px-4 max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">More Than Just Painters</h1>
+          <p className="text-xl text-blue-100">
+            A family-owned business dedicated to improving homes in Houston since 2012.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-sm font-semibold text-text-body">
-            <div className="p-4 bg-gray-50 rounded">Houston</div>
-            <div className="p-4 bg-gray-50 rounded">Katy</div>
-            <div className="p-4 bg-gray-50 rounded">Sugar Land</div>
-            <div className="p-4 bg-gray-50 rounded">The Woodlands</div>
-            <div className="p-4 bg-gray-50 rounded">Cypress</div>
-            <div className="p-4 bg-gray-50 rounded">Pearland</div>
-            <div className="p-4 bg-gray-50 rounded">Spring</div>
-            <div className="p-4 bg-gray-50 rounded">Memorial</div>
-          </div>
+        </div>
+      </section>
+
+      {/* Story */}
+      <SectionContainer className="bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+           <div>
+              <h2 className="text-3xl font-bold text-primary mb-6">Our Story</h2>
+              <p className="text-lg text-text_body mb-4">
+                Sunrise Painting Co. was founded with a simple mission: to provide Houston homeowners with a painting experience they could actually enjoy.
+              </p>
+              <p className="text-text_body mb-6">
+                Too many contractors were showing up late, leaving messes, or cutting corners on prep. We knew there was a better way. Over the last decade, we've grown from a single truck to a team of 20+ professionals, but our core values haven't changed.
+              </p>
+              <p className="text-text_body mb-8">
+                We treat every home like it's our own. That means showing up on time, communicating clearly, and staying until the job is done right.
+              </p>
+              <div className="flex gap-8">
+                 <div>
+                    <div className="text-4xl font-bold text-secondary mb-1">12+</div>
+                    <div className="text-sm text-text_muted font-semibold uppercase">Years Experience</div>
+                 </div>
+                 <div>
+                    <div className="text-4xl font-bold text-secondary mb-1">2,000+</div>
+                    <div className="text-sm text-text_muted font-semibold uppercase">Projects Completed</div>
+                 </div>
+                 <div>
+                    <div className="text-4xl font-bold text-secondary mb-1">100%</div>
+                    <div className="text-sm text-text_muted font-semibold uppercase">Satisfaction</div>
+                 </div>
+              </div>
+           </div>
+           <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-card">
+              <Image src={images["gallery-3"].src} alt="Our process" fill className="object-cover" />
+           </div>
         </div>
       </SectionContainer>
 
-      <CTASection />
+      {/* Process */}
+      <SectionContainer className="bg-gray-50">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+           <h2 className="text-3xl font-bold text-primary mb-4">Our Process</h2>
+           <p className="text-text_body">A proven system for consistent, high-quality results.</p>
+        </div>
+        <div className="max-w-3xl mx-auto space-y-4">
+           {processSteps.map((step, idx) => (
+              <AccordionItem key={idx} title={step.title} defaultOpen={idx === 0}>
+                 <p className="text-text_body leading-relaxed pl-4 border-l-2 border-secondary ml-1">
+                    {step.content}
+                 </p>
+              </AccordionItem>
+           ))}
+        </div>
+      </SectionContainer>
+
+      {/* Service Area */}
+      <SectionContainer className="bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+           <div className="order-2 md:order-1">
+              <h2 className="text-3xl font-bold text-primary mb-6">Proudly Serving Greater Houston</h2>
+              <p className="text-text_body mb-6">
+                 Based in West Houston, we are centrally located to serve the entire metropolitan area. Our crews are familiar with the specific architectural styles and weather challenges in these communities.
+              </p>
+              <ul className="space-y-3 mb-8">
+                 {["Houston (Inside the Loop, Heights, River Oaks)", "Katy", "Sugar Land", "The Woodlands", "Cypress", "Pearland"].map((area) => (
+                    <li key={area} className="flex items-center gap-3 text-text_body font-medium">
+                       <CheckCircle size={20} className="text-secondary" />
+                       {area}
+                    </li>
+                 ))}
+              </ul>
+              <Link href="/contact">
+                 <Button>Check Your Service Area</Button>
+              </Link>
+           </div>
+           <div className="order-1 md:order-2 bg-gray-100 rounded-2xl h-[400px] flex items-center justify-center relative overflow-hidden">
+              {/* Simple CSS Map Placeholder Representation */}
+              <div className="absolute inset-0 bg-blue-50 opacity-50"></div>
+              <div className="relative z-10 text-center">
+                 <Users size={64} className="text-primary mx-auto mb-4 opacity-50" />
+                 <p className="text-text_muted font-semibold">Interactive Map Coming Soon</p>
+                 <p className="text-sm text-text_muted">Currently serving a 30 mile radius from 77098</p>
+              </div>
+           </div>
+        </div>
+      </SectionContainer>
     </>
   );
 }

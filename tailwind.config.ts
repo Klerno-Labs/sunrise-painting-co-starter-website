@@ -14,36 +14,32 @@ const config: Config = {
         accent: "#FF6B35",
         background: "#F8F9FA",
         surface: "#FFFFFF",
-        "text-heading": "#1A202C",
-        "text-body": "#4A5568",
-        "text-muted": "#718096",
-        border: "#E2E8F0",
-        "border-light": "#EDF2F7",
+        text_heading: "#1A202C",
+        text_body: "#4A5568",
+        text_muted: "#718096",
+        border_light: "#E2E8F0",
       },
       fontFamily: {
-        heading: ["var(--font-montserrat)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
-      },
-      boxShadow: {
-        card: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
-        hover: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-        modal: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-      },
-      borderRadius: {
-        sm: "4px",
-        md: "8px",
-        lg: "12px",
-        xl: "16px",
-        "2xl": "24px",
-        full: "9999px",
+        heading: ["var(--font-heading)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
       },
       spacing: {
-        "8": "5rem", // 80px section padding
+        "section-mobile": "5rem", // 80px
+        "section-desktop": "6rem", // 96px
+      },
+      borderRadius: {
+        "lg": "0.75rem", // 12px
+        "xl": "1rem", // 16px
+      },
+      boxShadow: {
+        "card": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+        "hover": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      },
+      screens: {
+        '3xl': '1600px',
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 };
 export default config;
