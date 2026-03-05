@@ -7,6 +7,7 @@ import { siteConfig } from "@/config/site";
 import Logo from "@/components/ui/Logo";
 import { cn } from "@/lib/utils";
 
+import { useState, useEffect } from "react";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

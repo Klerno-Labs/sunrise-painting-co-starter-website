@@ -2,6 +2,8 @@
 import React, { useState, useRef, MouseEvent, TouchEvent } from "react";
 import { cn } from "@/lib/utils";
 
+import Image from "next/image";
+import { useState } from "react";
 interface BeforeAfterSliderProps {
   before: string;
   after: string;
