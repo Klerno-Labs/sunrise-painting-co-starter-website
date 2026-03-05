@@ -1,93 +1,84 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
-import { SmartEstimateForm } from "@/components/forms/SmartEstimateForm";
+import Link from "next/link";
 import { images } from "@/config/images";
-import { ShieldCheck, Star } from "lucide-react";
+import SmartEstimateForm from "@/components/forms/SmartEstimateForm";
+import { CheckCircle, Star, Shield } from "lucide-react";
 
-export function HeroSection() {
+const HeroSection = () => {
   return (
-    <section className="relative pt-[70px] min-h-[90vh] flex items-center bg-gray-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 lg:py-0">
+    <section className="relative pt-[80px] min-h-[90vh] flex items-center bg-gray-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8 order-2 lg:order-1"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
-              </span>
-              Serving Houston Since 2012
+          <div className="order-2 lg:order-1 relative z-10">
+            <div className="inline-flex items-center bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-semibold mb-6">
+              <Star className="w-4 h-4 mr-2 fill-current" />
+              Rated #1 Painter in Houston
             </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary leading-[1.1] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-[1.1] mb-6 tracking-tight">
               Premium Painting for <span className="text-secondary">Houston Homes.</span>
             </h1>
-            
-            <p className="text-lg text-text-body leading-relaxed max-w-lg">
-              Transform your space with our licensed, insured, and A+ rated team. 
-              From interiors to exteriors, we deliver flawless finishes that last.
+            <p className="text-lg text-text-body mb-8 max-w-lg">
+              Transform your home with meticulous craftsmanship. We are licensed, insured, and committed to delivering a flawless finish every time.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" asChild>
-                <a href="#services">Explore Services</a>
-              </Button>
-              <Button variant="secondary" size="lg" asChild>
-                <a href="/contact">Contact Us</a>
-              </Button>
-            </div>
-
-            <div className="flex items-center gap-6 pt-4 border-t border-border-light">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-accent" />
-                <span className="text-sm font-semibold text-text-heading">Licensed & Insured</span>
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-6 mb-8 text-sm font-semibold text-text-heading">
+              <div className="flex items-center">
+                <Shield className="w-5 h-5 text-secondary mr-2" />
+                Fully Insured
               </div>
-              <div className="flex items-center gap-2">
-                <div className="flex text-accent">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
-                  ))}
-                </div>
-                <span className="text-sm font-semibold text-text-heading">5-Star Rated</span>
+              <div className="flex items-center">
+                <CheckCircle className="w-5 h-5 text-secondary mr-2" />
+                Licensed Professionals
               </div>
             </div>
-          </motion.div>
 
-          {/* Right Visual - Image & Form Wrapper */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative order-1 lg:order-2"
-          >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            {/* Form */}
+            <div className="hidden lg:block w-full max-w-md">
+              <SmartEstimateForm variant="wizard" />
+            </div>
+          </div>
+
+          {/* Right Visual */}
+          <div className="order-1 lg:order-2 relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
               <Image
-                src={images["hero"].src}
-                alt={images["hero"].alt}
-                width={images["hero"].width}
-                height={images["hero"].height}
-                className="object-cover w-full h-[500px] lg:h-[600px]"
+                src={images.hero.src}
+                alt={images.hero.alt}
+                fill
                 priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
               
-              {/* Floating Form Card */}
-              <div className="absolute -bottom-8 -left-4 lg:left-0 w-full max-w-md p-4">
-                <SmartEstimateForm variant="wizard" />
+              {/* Floating Badge */}
+              <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md p-4 rounded-lg shadow-lg max-w-xs animate-bounce" style={{ animationDuration: '3s' }}>
+                <div className="flex items-center mb-2">
+                  <div className="flex text-accent">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <span className="ml-2 font-bold text-sm text-primary">Google Reviews</span>
+                </div>
+                <p className="text-xs text-text-body italic">"The team at Sunrise did an incredible job on our living room. Highly recommend!"</p>
               </div>
             </div>
-          </motion.div>
+            
+            {/* Mobile Form (Visible only on small screens) */}
+            <div className="lg:hidden mt-8">
+               <SmartEstimateForm variant="wizard" />
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default HeroSection;

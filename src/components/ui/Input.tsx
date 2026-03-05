@@ -1,21 +1,17 @@
-import * as React from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, id, label, error, ...props }, ref) => {
     return (
-      <div className="relative group w-full">
+      <div className="relative group">
         {label && (
-          <label
-            htmlFor={id}
-            className="block text-sm font-semibold text-text-heading mb-2"
-          >
+          <label htmlFor={id} className="block text-sm font-semibold text-text-heading mb-2">
             {label}
           </label>
         )}
@@ -23,23 +19,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           type={type}
           id={id}
           className={cn(
-            "flex h-12 w-full rounded-md border-2 border-border-light bg-surface px-4 py-3 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-secondary focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50 transition-colors",
-            error && "border-red-500 focus-visible:border-red-500",
+            "w-full border-2 bg-surface px-4 py-3 rounded-md text-text-heading transition-colors focus:outline-none focus:ring-0 placeholder:text-text-muted",
+            error ? "border-red-500 focus:border-red-500" : "border-border-light focus:border-secondary",
             className
           )}
           ref={ref}
           {...props}
         />
-        {error && (
-          <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
-            <span className="inline-block w-3 h-3 rounded-full bg-red-500 text-white flex items-center justify-center text-[8px]">!</span>
-            {error}
-          </p>
-        )}
+        {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
       </div>
     );
   }
 );
 Input.displayName = "Input";
 
-export { Input };
+export default Input;

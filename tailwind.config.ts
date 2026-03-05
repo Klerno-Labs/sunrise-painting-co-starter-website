@@ -32,15 +32,18 @@ const config: Config = {
       borderRadius: {
         sm: "4px",
         md: "8px",
-        lg: "16px",
+        lg: "12px",
+        xl: "16px",
+        "2xl": "24px",
         full: "9999px",
       },
       spacing: {
-        "8": "5rem", // 80px
+        "8": "5rem", // 80px section padding
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
-
 export default config;

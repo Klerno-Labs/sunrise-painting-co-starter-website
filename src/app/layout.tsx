@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site";
 
 const montserrat = Montserrat({ 
-  subsets: ["latin"],
+  subsets: ["latin"], 
   variable: "--font-montserrat",
   display: "swap",
 });
 
 const inter = Inter({ 
-  subsets: ["latin"],
+  subsets: ["latin"], 
   variable: "--font-inter",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sunrisepaintingco.com"),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=1200",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -47,12 +47,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
-      <body>
+    <html lang="en">
+      <body className={`${montserrat.variable} ${inter.variable}`}>
         <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
         
         {/* Structured Data */}
@@ -61,39 +59,38 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: siteConfig.name,
-              image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=1200",
-              telephone: siteConfig.contact.phone,
-              email: siteConfig.contact.email,
-              address: {
+              "@type": "PaintingService",
+              "name": siteConfig.name,
+              "image": "https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14",
+              "telephone": siteConfig.contact.phone,
+              "email": siteConfig.contact.email,
+              "address": {
                 "@type": "PostalAddress",
-                streetAddress: "2847 Westpark Dr, Suite 110",
-                addressLocality: "Houston",
-                addressRegion: "TX",
-                postalCode: "77098",
-                addressCountry: "US",
+                "streetAddress": "2847 Westpark Dr, Suite 110",
+                "addressLocality": "Houston",
+                "addressRegion": "TX",
+                "postalCode": "77098",
+                "addressCountry": "US"
               },
-              geo: {
+              "geo": {
                 "@type": "GeoCoordinates",
-                latitude: 29.7354,
-                longitude: -95.4543,
+                "latitude": 29.7266,
+                "longitude": -95.4626
               },
-              openingHoursSpecification: [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                  opens: "07:00",
-                  closes: "18:00",
-                },
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: "Saturday",
-                  opens: "08:00",
-                  closes: "14:00",
-                },
-              ],
-              priceRange: "$$",
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday"
+                ],
+                "opens": "07:00",
+                "closes": "18:00"
+              },
+              "priceRange": "$$"
             }),
           }}
         />

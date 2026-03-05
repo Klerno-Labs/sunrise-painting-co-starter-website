@@ -1,46 +1,38 @@
-"use client";
-
-import { motion } from "framer-motion";
+import React from "react";
 import Image from "next/image";
-import { Button } from "../ui/Button";
 import { images } from "@/config/images";
+import Link from "next/link";
 
-export function CTASection() {
+const CTASection = () => {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-20 md:py-32 bg-primary overflow-hidden">
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={images["cta"].src}
-          alt="Home exterior"
+          src={images.cta.src}
+          alt={images.cta.alt}
           fill
-          className="object-cover"
-          sizes="100vw"
+          className="object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-primary/90" />
       </div>
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
-            Ready to Transform Your Home?
-          </h2>
-          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-            Get a free, no-obligation estimate today. We guarantee quality workmanship and professional service.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="cta" asChild>
-              <a href="/contact">Get Your Free Quote</a>
-            </Button>
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100" asChild>
-              <a href={`tel:(713) 555-8291`}>Call (713) 555-8291</a>
-            </Button>
-          </div>
-        </motion.div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Transform Your Home?</h2>
+        <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+          Get a free, no-obligation estimate today. We respond to all inquiries within 24 hours.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/contact" className="bg-accent text-white px-8 py-4 rounded-lg font-bold text-lg hover:brightness-110 transition-all shadow-lg">
+            Get Your Free Quote
+          </Link>
+          <a href="tel:7135558291" className="bg-white text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all shadow-lg">
+            Call (713) 555-8291
+          </a>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default CTASection;

@@ -1,61 +1,44 @@
-"use client";
-
 import React from "react";
-import { AccordionItem } from "../interactive/AccordionItem";
-import { SectionContainer } from "../layout/SectionContainer";
+import AccordionItem from "@/components/interactive/AccordionItem";
 
 const faqs = [
   {
     question: "Are you licensed and insured?",
-    answer: "Yes, Sunrise Painting Co. is fully licensed and insured for both residential and commercial work in the state of Texas. We prioritize safety and compliance on every job site.",
+    answer: "Yes, we are fully licensed and insured in the state of Texas. We also carry workers' compensation insurance to protect our clients and our team."
   },
   {
     question: "Do you provide free estimates?",
-    answer: "Absolutely! We provide free, no-obligation estimates for all projects. You can use our online form or give us a call to schedule a convenient time for us to visit your property.",
+    answer: "Absolutely! We provide free, detailed written estimates for all projects. You can fill out our form online or call us to schedule an on-site consultation."
   },
   {
-    question: "What areas do you serve?",
-    answer: "We proudly serve the Greater Houston area, including Houston, Katy, Sugar Land, and The Woodlands.",
+    question: "What paint brands do you use?",
+    answer: "We primarily use Sherwin-Williams and Benjamin Moore products because of their durability and color retention. However, we can use any specific brand you request."
   },
   {
     question: "How long will the project take?",
-    answer: "Timeline varies based on the scope of work. A typical interior room takes 1-2 days, while exterior homes can take 3-7 days depending on size and weather conditions. We provide a detailed schedule in your proposal.",
+    answer: "Timeline varies based on the size of the project. A typical interior room takes 1-2 days, while a full exterior home can take 3-7 days depending on weather and prep work needed."
   },
+  {
+    question: "Do you move furniture?",
+    answer: "Yes, we move lightweight furniture and cover all floors and remaining furniture with protective drop cloths. We ask that you remove small valuables and electronics beforehand."
+  }
 ];
 
-export function FAQSection() {
+const FAQSection = () => {
   return (
-    <SectionContainer className="bg-gray-50">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-heading font-bold text-primary mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-text-body">
-            Find answers to common questions about our services and process.
-          </p>
-        </div>
-
-        <div className="space-y-4">
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center">Frequently Asked Questions</h2>
+        <div>
           {faqs.map((faq, index) => (
-            <FAQItem key={index} {...faq} />
+            <AccordionItem key={index} title={faq.question}>
+              {faq.answer}
+            </AccordionItem>
           ))}
         </div>
       </div>
-    </SectionContainer>
+    </section>
   );
-}
+};
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  return (
-    <AccordionItem
-      title={question}
-      isOpen={isOpen}
-      onClick={() => setIsOpen(!isOpen)}
-    >
-      <p>{answer}</p>
-    </AccordionItem>
-  );
-}
+export default FAQSection;

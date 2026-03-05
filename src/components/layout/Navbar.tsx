@@ -1,141 +1,102 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
-import { Button } from "@/components/ui/Button";
-import { Logo } from "@/components/ui/Logo";
 import { siteConfig } from "@/config/site";
+import Logo from "@/components/ui/Logo";
 import { cn } from "@/lib/utils";
 
-export function Navbar() {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
   return (
-    <header
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 h-[70px] flex items-center",
-        scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-border-light"
-          : "bg-white/80 backdrop-blur-sm"
-      )}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
-        {/* Logo */}
-        <Logo />
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[70px] flex items-center",
+          isScrolled || isOpen ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-border-light" : "bg-transparent"
+        )}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+          {/* Logo */}
+          <Link href="/" className="z-50 relative">
+            <Logo />
+          </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {siteConfig.navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary relative",
-                pathname === item.href
-                  ? "text-primary font-bold"
-                  : "text-text-body"
-              )}
-            >
-              {item.title}
-              {pathname === item.href && (
-                <span className="absolute -bottom-5 left-0 w-full h-0.5 bg-secondary rounded-full" />
-              )}
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {siteConfig.nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "text-base font-medium transition-colors hover:text-primary",
+                  pathname === item.href ? "text-primary" : "text-text-body"
+                )}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center space-x-4">
+            <a href={`tel:${siteConfig.contact.phone}`} className="flex items-center text-primary font-bold hover:text-secondary transition-colors">
+              <Phone className="w-4 h-4 mr-2" />
+              {siteConfig.contact.phone}
+            </a>
+            <Link href="/contact" className="bg-accent text-white px-5 py-2 rounded-md font-semibold hover:brightness-110 transition-all">
+              Get a Quote
             </Link>
-          ))}
-        </nav>
-
-        {/* CTA & Mobile Toggle */}
-        <div className="flex items-center gap-4">
-          <a
-            href={`tel:${siteConfig.contact.phone}`}
-            className="hidden lg:flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors"
-          >
-            <Phone className="w-4 h-4" />
-            {siteConfig.contact.phone}
-          </a>
-          
-          <div className="hidden lg:block">
-            <Button variant="cta" size="sm" asChild>
-              <Link href="/contact">Get a Quote</Link>
-            </Button>
           </div>
 
+          {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2 text-text-heading hover:bg-slate-100 rounded-md"
-            onClick={() => setIsOpen(true)}
-            aria-label="Open menu"
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden z-50 p-2 text-text-heading"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            <Menu className="w-6 h-6" />
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-      </div>
+      </header>
 
       {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 bg-primary lg:hidden">
-          <div className="flex flex-col h-full p-6">
-            <div className="flex justify-between items-center mb-8">
-              <div className="text-white">
-                <span className="text-xl font-heading font-bold block">SUNRISE</span>
-                <span className="text-xs text-secondary tracking-wider">
-                  PAINTING CO.
-                </span>
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-2 text-white hover:bg-white/10 rounded-md"
-                aria-label="Close menu"
-              >
-                <X className="w-8 h-8" />
-              </button>
-            </div>
-
-            <nav className="flex-1 flex flex-col gap-6">
-              {siteConfig.navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "text-2xl font-heading font-medium text-white/80 hover:text-secondary transition-colors",
-                    pathname === item.href && "text-secondary"
-                  )}
-                >
-                  {item.title}
-                </Link>
-              ))}
-            </nav>
-
-            <div className="mt-auto space-y-4">
-              <a
-                href={`tel:${siteConfig.contact.phone}`}
-                className="flex items-center justify-center gap-2 text-white text-lg font-bold p-4 rounded-lg border border-white/20"
-              >
-                <Phone className="w-5 h-5 text-accent" />
-                {siteConfig.contact.phone}
-              </a>
-              <Button variant="cta" size="lg" className="w-full" asChild>
-                <Link href="/contact">Get Free Estimate</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
+      <div
+        className={cn(
+          "fixed inset-0 z-40 bg-primary transform transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-center items-center space-y-8",
+          isOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        {siteConfig.nav.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={() => setIsOpen(false)}
+            className="text-2xl font-heading font-bold text-white hover:text-secondary transition-colors"
+          >
+            {item.title}
+          </Link>
+        ))}
+        <a
+          href={`tel:${siteConfig.contact.phone}`}
+          className="text-xl font-bold text-accent mt-4"
+          onClick={() => setIsOpen(false)}
+        >
+          {siteConfig.contact.phone}
+        </a>
+      </div>
+    </>
   );
-}
+};
+
+export default Navbar;

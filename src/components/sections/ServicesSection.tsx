@@ -1,96 +1,87 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Paintbrush, Home, Hammer, Wrench } from "lucide-react";
-import { SectionContainer } from "../layout/SectionContainer";
-import { cn } from "@/lib/utils";
+import React from "react";
+import { Paintbrush, Home, Hammer, FileText, Palette, Wand2 } from "lucide-react";
+import { images } from "@/config/images";
+import Link from "next/link";
 
 const services = [
   {
     title: "Interior Painting",
-    description: "Professional interior painting services. We protect your furniture and floors, leaving your home looking fresh and clean.",
     price: "$2.50-$4.00/sq ft",
-    icon: <Paintbrush className="w-6 h-6" />,
+    description: "Transform your living spaces with smooth, durable finishes and clean lines. We protect your furniture and ensure minimal dust.",
+    icon: <Home className="w-6 h-6" />,
+    image: "service-1"
   },
   {
     title: "Exterior Painting",
-    description: "Enhance your home's curb appeal with our durable exterior painting solutions, perfect for Houston's weather.",
     price: "$3.00-$5.00/sq ft",
-    icon: <Home className="w-6 h-6" />,
+    description: "Protect your home from the Houston elements with high-quality weather-resistant paints and thorough surface preparation.",
+    icon: <Paintbrush className="w-6 h-6" />,
+    image: "service-2"
   },
   {
     title: "Cabinet Refinishing",
-    description: "Give your kitchen a makeover without the cost of replacement. We stain, paint, and refinish to look brand new.",
     price: "$3,500-$8,000",
-    icon: <Hammer className="w-6 h-6" />,
+    description: "Give your kitchen a facelift for a fraction of the cost of replacement. Professional spraying and hand-finishing techniques.",
+    icon: <Palette className="w-6 h-6" />,
+    image: "service-3"
   },
   {
     title: "Drywall Repair",
-    description: "From small holes to water damage, our expert team seamlessly repairs and textures your drywall.",
     price: "$200-$800",
-    icon: <Wrench className="w-6 h-6" />,
+    description: "From small nail holes to large water damage repairs, we seamless patch and texture your walls to look brand new.",
+    icon: <Hammer className="w-6 h-6" />,
+    image: "gallery-1"
   },
   {
     title: "Color Consultation",
-    description: "Not sure which shade to pick? Our experts help you choose the perfect palette for your space.",
     price: "Free",
-    icon: <Paintbrush className="w-6 h-6" />,
+    description: "Not sure which shade of white? Our experts help you navigate the latest trends to find the perfect palette for your home.",
+    icon: <FileText className="w-6 h-6" />,
+    image: "gallery-2"
   },
   {
     title: "Popcorn Ceiling Removal",
-    description: "Modernize your home by removing outdated popcorn ceilings and replacing them with a smooth finish.",
     price: "$1.50-$3.00/sq ft",
-    icon: <Wrench className="w-6 h-6" />,
+    description: "Modernize your home by removing outdated popcorn texture and applying a smooth, modern finish.",
+    icon: <Wand2 className="w-6 h-6" />,
+    image: "gallery-3"
   },
 ];
 
-export function ServicesSection() {
+const ServicesSection = () => {
   return (
-    <SectionContainer id="services" className="bg-surface">
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-          Our Services
-        </h2>
-        <p className="text-lg text-text-body">
-          Comprehensive painting and home improvement services tailored to your needs.
-        </p>
-      </div>
+    <section id="services" className="py-16 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Services</h2>
+          <p className="text-text-body text-lg">
+            Comprehensive painting solutions tailored to your needs and budget.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className={cn(
-              "group bg-white p-8 rounded-xl border border-border-light shadow-card hover:-translate-y-1 hover:shadow-hover transition-all duration-300 flex flex-col h-full"
-            )}
-          >
-            <div className="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white transition-colors">
-              {service.icon}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="group bg-white rounded-xl border border-border-light p-6 shadow-sm hover:-translate-y-1 hover:shadow-hover transition-all duration-300 flex flex-col"
+            >
+              <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:text-white transition-colors">
+                {service.icon}
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-1">{service.title}</h3>
+              <p className="text-accent font-semibold text-sm mb-3">{service.price}</p>
+              <p className="text-text-body text-sm leading-relaxed mb-6 flex-grow">
+                {service.description}
+              </p>
+              <Link href="/contact" className="text-primary font-semibold text-sm hover:text-secondary flex items-center">
+                Get Quote <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
+              </Link>
             </div>
-            <h3 className="text-xl font-heading font-bold text-primary mb-3">
-              {service.title}
-            </h3>
-            <p className="text-text-body leading-relaxed mb-6 flex-grow">
-              {service.description}
-            </p>
-            <div className="pt-4 border-t border-border-light flex items-center justify-between">
-              <span className="text-sm font-bold text-accent">
-                Starting at {service.price}
-              </span>
-              <a
-                href="/contact"
-                className="text-sm font-semibold text-primary hover:text-secondary transition-colors"
-              >
-                Learn More &rarr;
-              </a>
-            </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
-    </SectionContainer>
+    </section>
   );
-}
+};
+
+export default ServicesSection;
