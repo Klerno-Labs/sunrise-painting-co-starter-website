@@ -1,0 +1,18 @@
+import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
+
+interface SectionContainerProps {
+  children: ReactNode;
+  className?: string;
+  id?: string;
+}
+
+export function SectionContainer({ children, className, id }: SectionContainerProps) {
+  return (
+    <section id={id} className={cn("py-16 md:py-24 lg:py-32 w-full", className)}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        {children}
+      </div>
+    </section>
+  );
+}
