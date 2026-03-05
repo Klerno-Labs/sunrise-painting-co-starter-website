@@ -1,32 +1,49 @@
 import type { Metadata } from "next";
-import { headingFont, bodyFont } from "@/lib/fonts";
+import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { images } from "@/config/images";
+
+const montserrat = Montserrat({ 
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sunrisepaintingco.com"),
   title: {
-    default: "Sunrise Painting Co. | Houston's Trusted Painters",
+    default: "Sunrise Painting Co. | Houston's Premier Residential & Commercial Painters",
     template: "%s | Sunrise Painting Co."
   },
-  description: "Professional residential and commercial painting services in Houston, TX. Interior, exterior, cabinet refinishing, and drywall repair. Licensed, insured, and A+ rated.",
+  description: "Family-owned residential and commercial painting company serving the Greater Houston area. Interior, exterior, cabinet refinishing, and drywall repair. Licensed & Insured.",
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    title: "Sunrise Painting Co. | Houston's Premier Residential & Commercial Painters",
+    description: "Premium painting services in Houston, Katy, Sugar Land, and The Woodlands. Get a free quote today.",
     url: "https://sunrisepaintingco.com",
     siteName: "Sunrise Painting Co.",
-    title: "Sunrise Painting Co. | Houston's Trusted Painters",
-    description: "Premium painting services in Greater Houston. Get a free quote today.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=1200&h=630&fit=crop",
-        width: 1200,
-        height: 630,
-        alt: "Sunrise Painting Co. Project"
-      }
-    ]
-  }
+        url: images.hero.src,
+        width: images.hero.width,
+        height: images.hero.height,
+        alt: images.hero.alt,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -35,9 +52,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
-      <body className="font-body text-text_body bg-background antialiased selection:bg-secondary selection:text-white">
-        {/* Structured Data */}
+    <html lang="en">
+      <body className={`${montserrat.variable} ${inter.variable}`}>
+        <Header />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -45,7 +66,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Sunrise Painting Co.",
-              "image": "https://sunrisepaintingco.com/logo.png",
+              "image": images.hero.src,
               "telephone": "(713) 555-8291",
               "email": "info@sunrisepaintingco.com",
               "address": {
@@ -58,8 +79,8 @@ export default function RootLayout({
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 29.7346,
-                "longitude": -95.4378
+                "latitude": "29.7304",
+                "longitude": "-95.4642"
               },
               "openingHoursSpecification": [
                 {
@@ -79,17 +100,6 @@ export default function RootLayout({
             })
           }}
         />
-        
-        {/* Skip to content for accessibility */}
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white p-4 rounded-md z-[100]">
-          Skip to main content
-        </a>
-
-        <Navbar />
-        <main id="main-content">
-          {children}
-        </main>
-        <Footer />
       </body>
     </html>
   );

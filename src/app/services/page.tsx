@@ -1,160 +1,142 @@
-import { Metadata } from "next";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { SectionContainer } from "@/components/ui/section-container";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { images } from "@/config/images";
-import { CheckCircle, Shield, Clock } from "lucide-react";
+import { Paintbrush2, ShieldCheck, Sparkles, Hammer, Sun, Layers } from "lucide-react";
+import { motion } from "framer-motion";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: "Our painting services including interior, exterior, cabinets, and drywall repair.",
-  openGraph: {
-    title: "Services",
-    description: "Our painting services including interior, exterior, cabinets, and drywall repair.",
-    images: [images["service-1"].src]
-  }
+export const metadata = {
+  title: "Services | Sunrise Painting Co.",
+  description: "Professional painting services in Houston including Interior, Exterior, Cabinet Refinishing, and Drywall Repair. Licensed & Insured.",
 };
 
-const services = [
-  {
-    id: "interior",
-    title: "Interior Painting",
-    price: "$2.50-$4.00/sq ft",
-    description: "We treat your home like our own. Our interior process includes furniture moving, hole patching, texture matching, and meticulous cut-in lines.",
-    image: images["service-2"],
-    features: ["Ceiling & Walls", "Trim & Crown Molding", "Cabinet Painting", "Eco-Friendly Options"]
-  },
-  {
-    id: "exterior",
-    title: "Exterior Painting",
-    price: "$3.00-$5.00/sq ft",
-    description: "Houston weather is tough on homes. We use premium weather-resistant paints and thorough prep work (power washing, scraping, priming) to ensure longevity.",
-    image: images["service-1"],
-    features: ["Power Washing", "Stain Removal", "Stucco & Wood Siding", "Garage Doors"]
-  },
-  {
-    id: "cabinets",
-    title: "Cabinet Refinishing",
-    price: "$3,500-$8,000",
-    description: "Update your kitchen for a fraction of the cost of replacement. We offer professional spray finishes that look factory-new.",
-    image: images["gallery-2"],
-    features: ["Spray Finish", "New Hardware Install", "Color Change", "Latte & Glaze Effects"]
-  },
-  {
-    id: "drywall",
-    title: "Drywall Repair",
-    price: "$200-$800",
-    description: "From small nail holes to large water damage patches, our repair work is invisible. We match existing textures perfectly.",
-    image: images.about,
-    features: ["Texture Matching", "Water Damage Repair", "Door Knob Holes", "Tape & Bed"]
-  },
-  {
-    id: "consultation",
-    title: "Color Consultation",
-    price: "Free",
-    description: "Choosing the right color is hard. Our color experts bring large sample boards to your home to help you visualize the final result.",
-    image: images["gallery-1"],
-    features: ["Large Sample Boards", "Lighting Analysis", "Trend Advice", "Coordination"]
-  },
-  {
-    id: "popcorn",
-    title: "Popcorn Ceiling Removal",
-    price: "$1.50-$3.00/sq ft",
-    description: "Modernize your home by removing that dated popcorn texture. We scrape, smooth, and refinish your ceiling to a modern look.",
-    image: images["gallery-3"],
-    features: ["Scraping & Removal", "Skim Coating", "Smooth Finish", "Minimal Mess"]
-  }
-];
-
 export default function ServicesPage() {
+  const services = [
+    {
+      title: "Interior Painting",
+      price: "$2.50 - $4.00 / sq ft",
+      desc: "We treat your home like our own. Using drop cloths, careful taping, and premium paints to ensure a flawless finish on walls, trim, and ceilings.",
+      icon: <Paintbrush2 className="w-8 h-8" />,
+      img: "gallery-2",
+      features: ["Color Consultation", "Ceiling Painting", "Trim & Crown Molding", "Wallpaper Removal"],
+    },
+    {
+      title: "Exterior Painting",
+      price: "$3.00 - $5.00 / sq ft",
+      desc: "Protect your investment from Houston's harsh weather. We power wash, scrape, sand, and prime every surface to ensure long-lasting results.",
+      icon: <ShieldCheck className="w-8 h-8" />,
+      img: "service-1",
+      features: ["Power Washing", "Staining & Sealing", "Wood Rot Repair", "Deck & Fence Painting"],
+    },
+    {
+      title: "Cabinet Refinishing",
+      price: "$3,500 - $8,000",
+      desc: "Update your kitchen for a fraction of the replacement cost. We spray finish cabinets in your home for a factory-quality look.",
+      icon: <Sparkles className="w-8 h-8" />,
+      img: "service-2",
+      features: ["Cabinet Cleaning", "Hardware Replacement", "Color Change", "Low-VOC Finishes"],
+    },
+    {
+      title: "Drywall Repair",
+      price: "$200 - $800",
+      desc: "From small nail holes to large water damage patches, our expert tapers make walls look brand new again.",
+      icon: <Hammer className="w-8 h-8" />,
+      img: "gallery-3",
+      features: ["Texture Matching", "Crack Repair", "Water Damage Restoration", "Corner Bead Repair"],
+    },
+    {
+      title: "Popcorn Ceiling Removal",
+      price: "$1.50 - $3.00 / sq ft",
+      desc: "Modernize your home by removing outdated popcorn texture. We scrape, sand, and re-finish your ceilings smoothly.",
+      icon: <Layers className="w-8 h-8" />,
+      img: "hero-alt",
+      features: ["Clean Plastic Containment", "Skimming", "Re-texturing", "Painting"],
+    },
+    {
+      title: "Color Consultation",
+      price: "Free with estimate",
+      desc: "Not sure which shade of white or bold accent color to choose? Our experts bring samples to your home to help you decide.",
+      icon: <Sun className="w-8 h-8" />,
+      img: "gallery-1",
+      features: ["Sample Boards", "Lighting Analysis", "Trend Guidance", "Coordination with Decor"],
+    },
+  ];
+
   return (
     <>
       <section className="bg-primary pt-32 pb-20">
-        <div className="max-w-[1320px] mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Services</h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Comprehensive painting solutions tailored to the unique needs of Houston homeowners.
+        <div className="container text-center text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Professional Services</h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            High-quality craftsmanship for every corner of your home.
           </p>
         </div>
       </section>
 
-      <SectionContainer className="bg-white">
-        <div className="space-y-20">
-          {services.map((service, idx) => (
-            <motion.div 
-              key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
-            >
-              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-card">
-                <Image 
-                  src={service.image.src}
-                  alt={service.title}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                   <span className="text-secondary font-bold text-lg">{service.price}</span>
-                   <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                   <span className="text-sm text-text_muted flex items-center gap-1">
-                     <Clock size={14} /> Typical Lead Time: 3-7 Days
-                   </span>
+      <section className="py-20 bg-background">
+        <div className="container">
+          <div className="space-y-20">
+            {services.map((service, idx) => (
+              <motion.div 
+                key={idx}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className={`relative rounded-2xl overflow-hidden shadow-xl h-[400px] ${idx % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+                  <Image
+                    src={images[service.img as keyof typeof images].src}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <h2 className="text-3xl font-bold text-primary mb-4">{service.title}</h2>
-                <p className="text-lg text-text_body mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-text_body">
-                      <CheckCircle size={18} className="text-green-500 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/contact">
-                  <Button>Get Quote for {service.title}</Button>
-                </Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </SectionContainer>
+                
+                <div className={`${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-6">
+                    {service.icon}
+                  </div>
+                  <h2 className="text-3xl font-bold text-primary mb-2">{service.title}</h2>
+                  <p className="text-accent font-bold text-lg mb-4">{service.price}</p>
+                  <p className="text-text-body text-lg mb-8 leading-relaxed">
+                    {service.desc}
+                  </p>
 
-      {/* Why Choose Us */}
-      <section className="bg-gray-50 py-24">
-        <div className="max-w-[1320px] mx-auto px-4">
-           <h2 className="text-3xl font-bold text-center text-primary mb-12">Why Sunrise Painting?</h2>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div className="bg-white p-8 rounded-xl shadow-sm">
-                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center text-secondary mx-auto mb-4">
-                    <Shield size={32} />
-                 </div>
-                 <h3 className="text-xl font-bold mb-2">Licensed & Insured</h3>
-                 <p className="text-text_body text-sm">Full liability and workers comp coverage for your peace of mind.</p>
-              </div>
-              <div className="bg-white p-8 rounded-xl shadow-sm">
-                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center text-secondary mx-auto mb-4">
-                    <CheckCircle size={32} />
-                 </div>
-                 <h3 className="text-xl font-bold mb-2">2-Year Warranty</h3>
-                 <p className="text-text_body text-sm">We stand behind our work with a comprehensive labor warranty.</p>
-              </div>
-              <div className="bg-white p-8 rounded-xl shadow-sm">
-                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center text-secondary mx-auto mb-4">
-                    <Clock size={32} />
-                 </div>
-                 <h3 className="text-xl font-bold mb-2">On-Time Completion</h3>
-                 <p className="text-text_body text-sm">We respect your time. Projects are completed within the agreed schedule.</p>
-              </div>
-           </div>
+                  <div className="mb-8">
+                    <p className="font-bold text-primary mb-3">Includes:</p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {service.features.map((feat, i) => (
+                        <li key={i} className="flex items-center gap-2 text-text-body">
+                          <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                          {feat}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Button variant="primary" asChild>
+                    <Link href="/contact">Get Quote for {service.title}</Link>
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="py-20 bg-white border-t border-border-light">
+        <div className="container text-center max-w-3xl">
+           <h2 className="text-3xl font-bold text-primary mb-6">Need a Custom Service?</h2>
+           <p className="text-lg text-text-body mb-8">
+             Don't see what you're looking for? We handle all types of residential and commercial painting projects.
+           </p>
+           <Button variant="cta" size="lg" asChild>
+              <Link href="/contact">Contact Us</Link>
+           </Button>
         </div>
       </section>
     </>
