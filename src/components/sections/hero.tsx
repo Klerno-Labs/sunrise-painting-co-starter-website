@@ -68,7 +68,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-900">100% Satisfaction</p>
-                    <p className="text-sm text-gray-600">We don't stop until you love it.</p>
+                    <p className="text-sm text-gray-600">We don&apos;t stop until you love it.</p>
                   </div>
                 </div>
               </div>
@@ -95,7 +95,7 @@ export default function Hero() {
       </div>
 
       {/* Floating Form on Desktop (Absolute positioned or in grid - here we put it in grid for better flow, but prompt requested split visual. 
-          Let's adjust: The prompt asked for Left (40%) Content, Right (60%) Visual. 
+          Let&apos;s adjust: The prompt asked for Left (40%) Content, Right (60%) Visual. 
           My Grid above is balanced. Let's put the form INSIDE the visual area on desktop or as an overlay. */}
     </section>
   );

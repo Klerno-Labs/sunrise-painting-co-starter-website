@@ -14,7 +14,7 @@ const SERVICES_DETAIL = [
     icon: <Brush size={32} />,
     image: "gallery-1",
     price: "Starting at $2.50/sq ft",
-    description: "We treat your home with the utmost respect. Our interior process includes meticulous furniture protection, flooring covers, and patching of imperfections. We use low-VOC paints for your family's safety.",
+    description: "We treat your home with the utmost respect. Our interior process includes meticulous furniture protection, flooring covers, and patching of imperfections. We use low-VOC paints for your family&apos;s safety.",
     features: ["Wall & Ceiling Painting", "Trim & Crown Molding", "Wallpaper Removal", "Eco-Friendly Paints"]
   },
   {

@@ -33,7 +33,7 @@ export default function Testimonials() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="font-heading font-bold text-4xl text-primary mb-4">What Our Neighbors Say</h2>
           <p className="text-lg text-gray-600">
-            We take pride in every project. But don't just take our word for it.
+            We take pride in every project. But don&apos;t just take our word for it.
           </p>
         </div>
 

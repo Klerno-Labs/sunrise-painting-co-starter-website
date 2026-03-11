@@ -79,7 +79,7 @@ export default function SmartEstimateForm({ variant = "wizard", className }: Sma
           <Check className="w-8 h-8 text-green-600" />
         </div>
         <h3 className="text-2xl font-bold text-primary mb-2">Request Received!</h3>
-        <p className="text-text-body">We'll be in touch within 24 hours to discuss your project.</p>
+        <p className="text-text-body">We&apos;ll be in touch within 24 hours to discuss your project.</p>
       </div>
     );
   }

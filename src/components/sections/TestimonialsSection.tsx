@@ -33,7 +33,7 @@ const TestimonialsSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">What Our Clients Say</h2>
           <p className="text-text-body text-lg">
-            Don't just take our word for it. Here is what your neighbors are saying.
+            Don&apos;t just take our word for it. Here is what your neighbors are saying.
           </p>
         </div>
 

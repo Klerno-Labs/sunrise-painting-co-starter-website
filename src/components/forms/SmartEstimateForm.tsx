@@ -61,7 +61,7 @@ const SmartEstimateForm = ({ variant = "wizard" }: SmartEstimateFormProps) => {
           </svg>
         </div>
         <h3 className="text-2xl font-bold text-primary mb-2">Request Received!</h3>
-        <p className="text-text-muted">Thank you. We'll be in touch within 24 hours.</p>
+        <p className="text-text-muted">Thank you. We&apos;ll be in touch within 24 hours.</p>
       </div>
     );
   }

@@ -64,7 +64,7 @@ export function SmartEstimateForm({ variant = "wizard" }: SmartEstimateFormProps
           Request Received!
         </h3>
         <p className="text-text_body">
-          Thank you for contacting Sunrise Painting Co. We'll be in touch within 24 hours.
+          Thank you for contacting Sunrise Painting Co. We&apos;ll be in touch within 24 hours.
         </p>
       </div>
     );

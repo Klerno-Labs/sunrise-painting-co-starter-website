@@ -56,10 +56,10 @@ export default function AboutPage() {
                 Founded in 2012, Sunrise Painting Co. began with a simple mission: bring quality, reliability, and integrity to the home improvement industry in Houston. 
               </p>
               <p>
-                As a family-owned business, we understand that your home is your most valuable asset. When you invite us in, you're not just getting a paint job; you're getting a partner dedicated to enhancing your living space.
+                As a family-owned business, we understand that your home is your most valuable asset. When you invite us in, you&apos;re not just getting a paint job; you're getting a partner dedicated to enhancing your living space.
               </p>
               <p>
-                Over the years, we've grown from a two-person crew to a team of certified professionals, but our core values haven't changed. We still believe in a firm handshake, a fair price, and a job done right the first time.
+                Over the years, we&apos;ve grown from a two-person crew to a team of certified professionals, but our core values haven't changed. We still believe in a firm handshake, a fair price, and a job done right the first time.
               </p>
             </div>
             

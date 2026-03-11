@@ -66,7 +66,7 @@ export default function SmartEstimateForm({ variant = "card" }: { variant?: "her
         </div>
         <h3 className="text-2xl font-bold text-primary mb-2">Request Received!</h3>
         <p className="text-gray-600">
-          We'll review your project details and contact you at <span className="font-semibold">{formData.phone || formData.email}</span> shortly.
+          We&apos;ll review your project details and contact you at <span className="font-semibold">{formData.phone || formData.email}</span> shortly.
         </p>
       </div>
     );
