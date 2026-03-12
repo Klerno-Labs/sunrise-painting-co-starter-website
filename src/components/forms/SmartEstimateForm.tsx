@@ -4,7 +4,6 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
 
-import { useState } from "react";
 interface SmartEstimateFormProps {
   variant?: "wizard" | "full";
 }
