@@ -96,7 +96,7 @@ export default function Hero() {
 
       {/* Floating Form on Desktop (Absolute positioned or in grid - here we put it in grid for better flow, but prompt requested split visual. 
           Let&apos;s adjust: The prompt asked for Left (40%) Content, Right (60%) Visual. 
-          My Grid above is balanced. Let's put the form INSIDE the visual area on desktop or as an overlay. */}
+          My Grid above is balanced. Let&apos;s put the form INSIDE the visual area on desktop or as an overlay. */}
     </section>
   );
 }

@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export', // Enables static export
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
