@@ -14,7 +14,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener(&quot;scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -83,7 +83,7 @@ export default function Header() {
             <button
               className="lg:hidden p-2 text-primary hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? &quot;Close menu" : "Open menu"}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
@@ -100,7 +100,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-heading font-semibold text-white hover:text-secondary transition-colors border-b border-white/10 pb-4&quot;
+                className="text-2xl font-heading font-semibold text-white hover:text-secondary transition-colors border-b border-white/10 pb-4"
               >
                 {link.label}
               </Link>

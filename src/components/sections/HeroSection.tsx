@@ -65,7 +65,7 @@ const HeroSection = () => {
                   </div>
                   <span className="ml-2 font-bold text-sm text-primary">Google Reviews</span>
                 </div>
-                <p className="text-xs text-text-body italic">"The team at Sunrise did an incredible job on our living room. Highly recommend!&quot;</p>
+                <p className="text-xs text-text-body italic">"The team at Sunrise did an incredible job on our living room. Highly recommend!"</p>
               </div>
             </div>
             

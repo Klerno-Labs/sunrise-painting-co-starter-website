@@ -70,7 +70,7 @@ export default function RootLayout({
         {/* Structured Data for Local Business */}
         <Script id="structured-data" type="application/ld+json">
           {JSON.stringify({
-            &quot;@context": "https://schema.org",
+            "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": siteConfig.name,
             "image": "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1200&h=800&fit=crop",

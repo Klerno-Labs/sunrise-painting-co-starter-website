@@ -16,7 +16,7 @@ const SmartEstimateForm = ({ variant = "wizard" }: SmartEstimateFormProps) => {
   
   // Form Data State
   const [formData, setFormData] = useState({
-    service: &quot;",
+    service: "",
     zip: "",
     name: "",
     email: "",
@@ -35,7 +35,7 @@ const SmartEstimateForm = ({ variant = "wizard" }: SmartEstimateFormProps) => {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch(&quot;/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -92,7 +92,7 @@ const SmartEstimateForm = ({ variant = "wizard" }: SmartEstimateFormProps) => {
                   <option value="Drywall">Drywall Repair</option>
                   <option value="Other">Other</option>
                 </select>
-                <Button type="button" onClick={() => setStep(1)} className="w-full&quot;>Next</Button>
+                <Button type="button" onClick={() => setStep(1)} className="w-full">Next</Button>
               </div>
             )}
 
@@ -110,8 +110,8 @@ const SmartEstimateForm = ({ variant = "wizard" }: SmartEstimateFormProps) => {
                   onChange={handleChange}
                 />
                 <div className="flex space-x-2">
-                  <Button type="button" variant="secondary" onClick={() => setStep(0)} className="w-1/3&quot;>Back</Button>
-                  <Button type="button" onClick={() => setStep(2)} className="w-2/3&quot;>Next</Button>
+                  <Button type="button" variant="secondary" onClick={() => setStep(0)} className="w-1/3">Back</Button>
+                  <Button type="button" onClick={() => setStep(2)} className="w-2/3">Next</Button>
                 </div>
               </div>
             )}
@@ -123,7 +123,7 @@ const SmartEstimateForm = ({ variant = "wizard" }: SmartEstimateFormProps) => {
                 <Input label="Phone Number" type="tel" name="phone" required value={formData.phone} onChange={handleChange} />
                 <Input label="Email Address" type="email" name="email" required value={formData.email} onChange={handleChange} />
                 <div className="flex space-x-2">
-                  <Button type="button" variant="secondary" onClick={() => setStep(1)} className="w-1/3&quot;>Back</Button>
+                  <Button type="button" variant="secondary" onClick={() => setStep(1)} className="w-1/3">Back</Button>
                   <Button type="submit" isLoading={isSubmitting} className="w-2/3">Get Free Estimate</Button>
                 </div>
               </div>

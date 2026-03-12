@@ -41,7 +41,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, title, clas
     };
 
     if (isDragging) {
-      window.addEventListener(&quot;mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
     }
 

@@ -16,7 +16,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener(&quot;scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -83,7 +83,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors&quot;
+              className="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
               aria-label="Open menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -103,7 +103,7 @@ export default function Navbar() {
         <div className="flex flex-col items-center justify-center h-full gap-8 p-4">
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-full transition-colors&quot;
+            className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
             aria-label="Close menu"
           >
             <X size={32} />
@@ -116,7 +116,7 @@ export default function Navbar() {
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={cn(
-                  &quot;text-2xl font-heading font-semibold text-white/90 hover:text-white transition-colors",
+                  "text-2xl font-heading font-semibold text-white/90 hover:text-white transition-colors",
                   pathname === item.href && "text-secondary"
                 )}
               >
@@ -136,7 +136,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="bg-accent text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-accent-dark transition-all w-full text-center shadow-lg&quot;
+              className="bg-accent text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-accent-dark transition-all w-full text-center shadow-lg"
             >
               Get Free Estimate
             </Link>

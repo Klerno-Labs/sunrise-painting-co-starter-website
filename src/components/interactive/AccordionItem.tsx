@@ -16,7 +16,7 @@ const AccordionItem = ({ title, children }: AccordionItemProps) => {
     <div className="border border-border-light rounded-md mb-2 overflow-hidden bg-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-6 py-4 flex justify-between items-center bg-surface hover:bg-gray-50 transition-colors text-left focus:outline-none&quot;
+        className="w-full px-6 py-4 flex justify-between items-center bg-surface hover:bg-gray-50 transition-colors text-left focus:outline-none"
       >
         <span className="font-semibold text-text-heading">{title}</span>
         <ChevronDown

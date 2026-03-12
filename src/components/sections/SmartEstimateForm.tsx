@@ -18,7 +18,7 @@ export default function SmartEstimateForm({ variant = "wizard", className }: Sma
 
   // Form State
   const [formData, setFormData] = useState({
-    service: &quot;",
+    service: "",
     zipCode: "",
     name: "",
     email: "",
@@ -31,7 +31,7 @@ export default function SmartEstimateForm({ variant = "wizard", className }: Sma
     setFormData({ ...formData, [e.target.name]: e.target.value });
     // Clear error on change
     if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: &quot;" });
+      setErrors({ ...errors, [e.target.name]: "" });
     }
   };
 
@@ -90,7 +90,7 @@ export default function SmartEstimateForm({ variant = "wizard", className }: Sma
         <div className="mb-6">
           <div className="flex justify-between items-center text-sm font-semibold text-text-muted mb-2">
             <span>Step {step} of 3</span>
-            <span>{step === 1 ? &quot;Service" : step === 2 ? "Location" : "Details"}</span>
+            <span>{step === 1 ? "Service" : step === 2 ? "Location" : "Details"}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
@@ -190,7 +190,7 @@ export default function SmartEstimateForm({ variant = "wizard", className }: Sma
             )}
             <Button type={step === 3 ? "submit" : "button"} variant={step === 3 ? "cta" : "primary"} className="flex-1" onClick={step < 3 ? nextStep : undefined} disabled={isSubmitting}>
               {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
-              {step === 3 ? &quot;Get My Free Quote" : "Next"}
+              {step === 3 ? "Get My Free Quote" : "Next"}
             </Button>
           </div>
         </form>
