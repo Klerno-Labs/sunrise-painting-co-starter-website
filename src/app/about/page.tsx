@@ -116,7 +116,7 @@ export default function AboutPage() {
           
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { title: "Consultation", desc: "Free estimate and color consultation." },
+              { title: &quot;Consultation", desc: "Free estimate and color consultation." },
               { title: "Preparation", desc: "Furniture protection, sanding, and patching." },
               { title: "Painting", desc: "Professional application with premium paints." },
               { title: "Inspection", desc: "Final walkthrough and touch-ups." }

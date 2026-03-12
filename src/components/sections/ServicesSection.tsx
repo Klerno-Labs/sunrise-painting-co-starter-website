@@ -9,42 +9,42 @@ const services = [
     price: "$2.50-$4.00/sq ft",
     description: "Transform your living spaces with smooth, durable finishes and clean lines. We protect your furniture and ensure minimal dust.",
     icon: <Home className="w-6 h-6" />,
-    image: "service-1"
+    image: &quot;service-1"
   },
   {
     title: "Exterior Painting",
     price: "$3.00-$5.00/sq ft",
     description: "Protect your home from the Houston elements with high-quality weather-resistant paints and thorough surface preparation.",
     icon: <Paintbrush className="w-6 h-6" />,
-    image: "service-2"
+    image: &quot;service-2"
   },
   {
     title: "Cabinet Refinishing",
     price: "$3,500-$8,000",
     description: "Give your kitchen a facelift for a fraction of the cost of replacement. Professional spraying and hand-finishing techniques.",
     icon: <Palette className="w-6 h-6" />,
-    image: "service-3"
+    image: &quot;service-3"
   },
   {
     title: "Drywall Repair",
     price: "$200-$800",
     description: "From small nail holes to large water damage repairs, we seamless patch and texture your walls to look brand new.",
     icon: <Hammer className="w-6 h-6" />,
-    image: "gallery-1"
+    image: &quot;gallery-1"
   },
   {
     title: "Color Consultation",
     price: "Free",
     description: "Not sure which shade of white? Our experts help you navigate the latest trends to find the perfect palette for your home.",
     icon: <FileText className="w-6 h-6" />,
-    image: "gallery-2"
+    image: &quot;gallery-2"
   },
   {
     title: "Popcorn Ceiling Removal",
     price: "$1.50-$3.00/sq ft",
     description: "Modernize your home by removing outdated popcorn texture and applying a smooth, modern finish.",
     icon: <Wand2 className="w-6 h-6" />,
-    image: "gallery-3"
+    image: &quot;gallery-3"
   },
 ];
 

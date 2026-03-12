@@ -24,7 +24,7 @@ const BeforeAfterSection = () => {
             />
           </div>
           
-          {/* Note: In a real app I&apos;d use different images. For this demo I&apos;ll reuse the config but logically they'd be different. 
+          {/* Note: In a real app I&apos;d use different images. For this demo I&apos;ll reuse the config but logically they&apos;d be different. 
               Since config has specific slots, I will simulate different URLs via query params if needed or just reuse for demo structure. 
               I will use gallery-1 and gallery-2 as before/after pair for demo purposes */}
         </div>

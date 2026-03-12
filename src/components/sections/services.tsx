@@ -7,42 +7,42 @@ import { cn } from "@/lib/utils";
 const services = [
   {
     icon: <Brush size={32} />,
-    title: "Interior Painting",
+    title: &quot;Interior Painting",
     price: "$2.50 - $4.00/sq ft",
     desc: "Transform your living spaces with clean lines, premium paints, and zero mess.",
     link: "/contact?service=interior"
   },
   {
     icon: <Home size={32} />,
-    title: "Exterior Painting",
+    title: &quot;Exterior Painting",
     price: "$3.00 - $5.00/sq ft",
     desc: "Protect your home from Texas weather with our weather-resistant exterior systems.",
     link: "/contact?service=exterior"
   },
   {
     icon: <Layers size={32} />,
-    title: "Cabinet Refinishing",
+    title: &quot;Cabinet Refinishing",
     price: "$3,500 - $8,000",
     desc: "Give your kitchen a luxury makeover without the cost of full replacement.",
     link: "/contact?service=cabinets"
   },
   {
     icon: <Hammer size={32} />,
-    title: "Drywall Repair",
+    title: &quot;Drywall Repair",
     price: "$200 - $800",
     desc: "Seamless patches and texture matching for holes, water damage, and cracks.",
     link: "/contact?service=drywall"
   },
   {
     icon: <ClipboardCheck size={32} />,
-    title: "Color Consultation",
+    title: &quot;Color Consultation",
     price: "Free",
     desc: "Not sure which shade? We bring experts to help you pick the perfect palette.",
     link: "/contact?service=consultation"
   },
   {
     icon: <PaintBucket size={32} />,
-    title: "Popcorn Removal",
+    title: &quot;Popcorn Removal",
     price: "$1.50 - $3.00/sq ft",
     desc: "Modernize your ceilings with professional scraping and refinishing.",
     link: "/contact?service=popcorn"

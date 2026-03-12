@@ -15,7 +15,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener(&quot;scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -63,7 +63,7 @@ const Navbar = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden z-50 p-2 text-text-heading"
+            className="md:hidden z-50 p-2 text-text-heading&quot;
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -83,7 +83,7 @@ const Navbar = () => {
             key={item.href}
             href={item.href}
             onClick={() => setIsOpen(false)}
-            className="text-2xl font-heading font-bold text-white hover:text-secondary transition-colors"
+            className="text-2xl font-heading font-bold text-white hover:text-secondary transition-colors&quot;
           >
             {item.title}
           </Link>

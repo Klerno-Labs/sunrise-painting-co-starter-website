@@ -27,7 +27,7 @@ export default function Hero() {
 
             <ul className="space-y-3 max-w-md">
               {[
-                "Free detailed estimates",
+                &quot;Free detailed estimates",
                 "Licensed & Insured (BBB A+ Rated)",
                 "Strict clean-up guarantee"
               ].map((item, idx) => (

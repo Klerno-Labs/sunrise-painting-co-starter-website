@@ -12,7 +12,7 @@ const SERVICES_DETAIL = [
   {
     title: "Interior Painting",
     icon: <Brush size={32} />,
-    image: "gallery-1",
+    image: &quot;gallery-1",
     price: "Starting at $2.50/sq ft",
     description: "We treat your home with the utmost respect. Our interior process includes meticulous furniture protection, flooring covers, and patching of imperfections. We use low-VOC paints for your family&apos;s safety.",
     features: ["Wall & Ceiling Painting", "Trim & Crown Molding", "Wallpaper Removal", "Eco-Friendly Paints"]
@@ -20,7 +20,7 @@ const SERVICES_DETAIL = [
   {
     title: "Exterior Painting",
     icon: <Home size={32} />,
-    image: "service-1",
+    image: &quot;service-1",
     price: "Starting at $3.00/sq ft",
     description: "Houston weather can be tough on exteriors. We use premium elastomeric and weather-resistant coatings to protect your investment. Proper power washing and scraping ensures adhesion.",
     features: ["Power Washing", "Stucco & Wood Siding", "Deck Staining", "Weatherproofing"]
@@ -28,7 +28,7 @@ const SERVICES_DETAIL = [
   {
     title: "Cabinet Refinishing",
     icon: <Layers size={32} />,
-    image: "hero-alt",
+    image: &quot;hero-alt",
     price: "$3,500 - $8,000 avg",
     description: "Update your kitchen without the mess of demolition. We spray-finish cabinets on-site or off-site for a factory-smooth finish that looks brand new at a fraction of the cost.",
     features: ["Color Change", "Door Replacement", "Hardware Upgrade", "Clear Coat Finish"]
@@ -36,7 +36,7 @@ const SERVICES_DETAIL = [
   {
     title: "Drywall Repair",
     icon: <Hammer size={32} />,
-    image: "service-3",
+    image: &quot;service-3",
     price: "$200 - $800 per area",
     description: "From nail pops to large water damage patches, our drywall experts make invisible repairs. We match existing texture perfectly to leave no trace of damage.",
     features: ["Texture Matching", "Crack Repair", "Water Damage Restoration", "Corner Bead Repair"]

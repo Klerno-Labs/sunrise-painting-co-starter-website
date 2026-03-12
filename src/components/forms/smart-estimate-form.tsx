@@ -41,7 +41,7 @@ export function SmartEstimateForm({ variant = "wizard" }: SmartEstimateFormProps
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsSuccess(true);
     } catch (error) {
-      console.error("Submission error", error);
+      console.error(&quot;Submission error", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -75,9 +75,9 @@ export function SmartEstimateForm({ variant = "wizard" }: SmartEstimateFormProps
       {variant === "wizard" && (
         <div className="mb-6">
           <div className="flex justify-between text-xs font-semibold text-text_muted mb-2">
-            <span className={step >= 1 ? "text-primary" : ""}>Service</span>
-            <span className={step >= 2 ? "text-primary" : ""}>Location</span>
-            <span className={step >= 3 ? "text-primary" : ""}>Details</span>
+            <span className={step >= 1 ? &quot;text-primary" : ""}>Service</span>
+            <span className={step >= 2 ? &quot;text-primary" : ""}>Location</span>
+            <span className={step >= 3 ? &quot;text-primary" : ""}>Details</span>
           </div>
           <div className="h-1 w-full bg-gray-100 rounded-full overflow-hidden">
             <div
@@ -175,7 +175,7 @@ export function SmartEstimateForm({ variant = "wizard" }: SmartEstimateFormProps
                   disabled={isSubmitting} 
                   className="flex-1"
                 >
-                  {isSubmitting ? <Loader2 className="animate-spin" /> : "Get My Quote"}
+                  {isSubmitting ? <Loader2 className="animate-spin" /> : &quot;Get My Quote"}
                 </Button>
               </div>
             </>
@@ -240,7 +240,7 @@ export function SmartEstimateForm({ variant = "wizard" }: SmartEstimateFormProps
                 className="w-full"
                 size="lg"
               >
-                {isSubmitting ? <><Loader2 className="animate-spin mr-2"/> Sending...</> : "Send Message"}
+                {isSubmitting ? <><Loader2 className="animate-spin mr-2"/> Sending...</> : &quot;Send Message"}
               </Button>
             </>
           )}

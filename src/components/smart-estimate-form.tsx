@@ -15,12 +15,12 @@ interface FormData {
 
 const STEPS = [
   { id: 1, title: "Service", icon: <User size={20} /> },
-  { id: 2, title: "Location", icon: <MapPin size={20} /> },
-  { id: 3, title: "Details", icon: <Phone size={20} /> },
+  { id: 2, title: &quot;Location", icon: <MapPin size={20} /> },
+  { id: 3, title: &quot;Details", icon: <Phone size={20} /> },
 ];
 
 const SERVICES = [
-  "Interior Painting",
+  &quot;Interior Painting",
   "Exterior Painting",
   "Cabinet Refinishing",
   "Drywall Repair",
@@ -33,7 +33,7 @@ export default function SmartEstimateForm({ variant = "card" }: { variant?: "her
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState<FormData>({
-    name: "",
+    name: &quot;",
     email: "",
     phone: "",
     zip: "",
@@ -79,10 +79,10 @@ export default function SmartEstimateForm({ variant = "card" }: { variant?: "her
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-gray-100 -z-10" />
         {STEPS.map((s) => (
           <div key={s.id} className="flex flex-col items-center">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${step >= s.id ? "bg-primary text-white" : "bg-white border-2 border-gray-200 text-gray-400"}`}>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${step >= s.id ? &quot;bg-primary text-white" : "bg-white border-2 border-gray-200 text-gray-400"}`}>
               {s.icon}
             </div>
-            <span className={`text-xs font-semibold mt-2 hidden sm:block ${step >= s.id ? "text-primary" : "text-gray-400"}`}>
+            <span className={`text-xs font-semibold mt-2 hidden sm:block ${step >= s.id ? &quot;text-primary" : "text-gray-400"}`}>
               {s.title}
             </span>
           </div>
@@ -138,7 +138,7 @@ export default function SmartEstimateForm({ variant = "card" }: { variant?: "her
         {/* Navigation Buttons */}
         <div className="pt-4 flex gap-3">
           {step > 1 && (
-            <button type="button" onClick={() => setStep(step - 1)} className="px-4 py-2 text-gray-500 hover:text-gray-800 font-medium transition-colors">
+            <button type="button" onClick={() => setStep(step - 1)} className="px-4 py-2 text-gray-500 hover:text-gray-800 font-medium transition-colors&quot;>
               Back
             </button>
           )}
@@ -150,7 +150,7 @@ export default function SmartEstimateForm({ variant = "card" }: { variant?: "her
               </span>
             ) : (
               <span className="flex items-center justify-center gap-2">
-                {step === 3 ? "Get My Free Estimate" : "Next Step"}
+                {step === 3 ? &quot;Get My Free Estimate" : "Next Step"}
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
             )}

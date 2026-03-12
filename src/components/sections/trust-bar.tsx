@@ -1,10 +1,10 @@
 import { ShieldCheck, Award, Users, Wrench } from "lucide-react";
 
 const BADGES = [
-  { icon: <ShieldCheck size={32} />, title: "Licensed & Insured", desc: "Full coverage protection" },
-  { icon: <Award size={32} />, title: "BBB A+ Rated", desc: "Trusted business partner" },
-  { icon: <Users size={32} />, title: "Family Owned", desc: "Personal touch since 2012" },
-  { icon: <Wrench size={32} />, title: "Master Painters", desc: "Certified professionals" },
+  { icon: <ShieldCheck size={32} />, title: &quot;Licensed & Insured", desc: "Full coverage protection" },
+  { icon: <Award size={32} />, title: &quot;BBB A+ Rated", desc: "Trusted business partner" },
+  { icon: <Users size={32} />, title: &quot;Family Owned", desc: "Personal touch since 2012" },
+  { icon: <Wrench size={32} />, title: &quot;Master Painters", desc: "Certified professionals" },
 ];
 
 export default function TrustBar() {

@@ -15,7 +15,7 @@ export function AccordionItem({ title, children, defaultOpen = false }: Accordio
     <div className="border border-border_light rounded-lg overflow-hidden bg-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center p-6 text-left font-semibold text-text_heading hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
+        className="w-full flex justify-between items-center p-6 text-left font-semibold text-text_heading hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50&quot;
       >
         <span className="pr-4">{title}</span>
         <span
